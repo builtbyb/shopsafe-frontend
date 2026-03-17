@@ -1,6 +1,50 @@
-# Getting Started with Create React App
+# ShopSafe Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React frontend for ShopSafe — a mechanic trust platform that helps everyday people find honest auto repair shops using AI.
+
+## Features
+
+- **Location search** — find shops near any city or zip code
+- **AI trust scores** — every shop gets a ShopSafe Score (0–100) based on review analysis
+- **Trust verdicts** — Highly Trusted, Trusted, Proceed with Caution, or Avoid
+- **AI analysis cards** — green flags, red flags, price fairness, and plain-English summaries
+- **Instant results** — cached searches return in under a second
+
+## Tech Stack
+
+- **React** — frontend framework
+- **Cloudflare Workers** — backend API (shopsafe-worker)
+- **Supabase** — shop profile caching
+- **Claude API** — AI review analysis
+
+## Getting Started
+
+```bash
+npm install
+npm start
+```
+
+App runs at `http://localhost:3000`.
+
+## How It Works
+
+```
+User searches location
+  → GET /search?location=Miami, FL
+  → Worker checks Supabase cache (7 day TTL)
+  → If miss: scrapes Google Maps via Apify + scores with Claude
+  → Returns ranked shop list with trust scores
+  → Frontend renders cards grouped by trust level
+```
+
+## Design
+
+- Dark theme: #0a0a0c background
+- Gold primary: #c9a227
+- Fonts: Bebas Neue (headings), DM Sans (body), Outfit (UI)
+- Built for non-car-people — plain English, no jargon
+
+---
 
 ## Available Scripts
 
